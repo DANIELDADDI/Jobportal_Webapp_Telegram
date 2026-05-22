@@ -4,6 +4,7 @@ import jobController from '../controllers/jobController.js';
 import { authenticateToken } from '../middleware/auth.js';
 import { validateJobInput } from '../middleware/validation.js';
 
+
 const router = Router();
 
 

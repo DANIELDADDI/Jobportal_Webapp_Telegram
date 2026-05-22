@@ -1,6 +1,7 @@
-import { query } from './config/database.js';
-import { hashPassword } from './utils/helpers.js';
 
+import { query } from '../config/database.js';
+
+import { hashPassword } from '../utils/helpers.js';
 
 
 
@@ -159,7 +160,7 @@ async function seedDatabase() {
                         experience_level: 'Entry-Level',
                         location: 'Salmiya',
                         remote: false,
-                        skills_required: ['HTML', 'CSS', 'JavaScript']
+                        skills_required: '{HTML, CSS, JavaScript}'
                   },
                   {
                         employer_id: employerIds[1],
@@ -173,7 +174,7 @@ async function seedDatabase() {
                         experience_level: 'Mid-Level',
                         location: 'Downtown Kuwait',
                         remote: false,
-                        skills_required: ['Financial Analysis', 'Excel', 'SQL']
+                        skills_required: "{'Financial Analysis', Excel, SQL}"
                   },
                   {
                         employer_id: employerIds[1],
@@ -187,7 +188,7 @@ async function seedDatabase() {
                         experience_level: 'Senior',
                         location: 'Kuwait City',
                         remote: false,
-                        skills_required: ['Investment Analysis', 'Risk Management', 'Client Relations']
+                        skills_required: "{'Investment Analysis', 'Risk Management', 'Client Relations'}"
                   }
             ];
 
@@ -199,7 +200,7 @@ async function seedDatabase() {
          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING id`,
                         [job.employer_id, job.category_id, job.title, job.description, job.requirements,
                         job.salary_min, job.salary_max, job.job_type, job.experience_level, job.location,
-                        job.remote, JSON.stringify(job.skills_required), 'published']
+                              job.remote, job.skills_required, 'published']
                   );
                   jobIds.push(result.rows[0].id);
             }

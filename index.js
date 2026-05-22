@@ -5,13 +5,13 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 
 // Import routes
-import authRoutes from './routes/authRoutes.js';
-import jobRoutes from './routes/jobRoutes.js';
-import applicationRoutes from './routes/applicationRoutes.js';
-import contactRoutes from './routes/contactRoutes.js';
+import authRoutes from './src/routes/authRoutes.js';
+import jobRoutes from './src/routes/jobRoutes.js';
+import applicationRoutes from './src/routes/applicationRoutes.js';
+import contactRoutes from './src/routes/contactRoutes.js';
 
 // Import middleware
-import { errorHandler, notFoundHandler } from './middleware/errorHandler.js';
+import { errorHandler, notFoundHandler } from './src/middleware/errorHandler.js';
 
 // Load environment variables
 dotenv.config();
@@ -44,18 +44,18 @@ app.get('/health', (req, res) => {
 
 
 // API Routes
-app.use('/api/v1/auth', authRoutes);
-app.use('/api/v1/jobs', jobRoutes);
-app.use('/api/v1/applications', applicationRoutes);
-app.use('/api/v1/contact', contactRoutes);
+// app.use('/api/v1/auth', authRoutes);
+// app.use('/api/v1/jobs', jobRoutes);
+// app.use('/api/v1/applications', applicationRoutes);
+// app.use('/api/v1/contact', contactRoutes);
 
 
 
 // 404 Not Found
-app.use(notFoundHandler);
+// app.use(notFoundHandler);
 
 // Error Handling Middleware
-app.use(errorHandler);
+// app.use(errorHandler);
 
 
 
