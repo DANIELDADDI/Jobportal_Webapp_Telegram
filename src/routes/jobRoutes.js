@@ -1,8 +1,8 @@
 // src/routes/jobRoutes.js
 import { Router } from 'express';
 import jobController from '../controllers/jobController.js';
-import { authenticateToken } from '../middleware/auth.js';
-import { validateJobInput } from '../middleware/validation.js';
+import { authMiddleware } from '../middleware/auth.js';
+import { validate } from '../middleware/validation.js';
 
 
 const router = Router();
@@ -23,23 +23,23 @@ router.get('/:jobId', jobController.getJobById);
 
 
 // Protected routes (require authentication)
-router.post('/', authenticateToken, validateJobInput, jobController.createJob);
-router.put('/:jobId', authenticateToken, validateJobInput, jobController.updateJob);
-router.delete('/:jobId', authenticateToken, jobController.deleteJob);
+router.post('/', authMiddleware, validate, jobController.createJob);
+router.put('/:jobId', authMiddleware, validate, jobController.updateJob);
+router.delete('/:jobId', authMiddleware, jobController.deleteJob);
 
 
 
 
 
 // Job status operations
-router.patch('/:jobId/publish', authenticateToken, jobController.publishJob);
-router.patch('/:jobId/close', authenticateToken, jobController.closeJob);
-router.patch('/:jobId/feature', authenticateToken, jobController.featureJob);
+router.patch('/:jobId/publish', authMiddleware, jobController.publishJob);
+router.patch('/:jobId/close', authMiddleware, jobController.closeJob);
+router.patch('/:jobId/feature', authMiddleware, jobController.featureJob);
 
 
 
 
 // Employer operations
-router.get('/employer/my-jobs', authenticateToken, jobController.getEmployerJobs);
+router.get('/employer/my-jobs', authMiddleware, jobController.getEmployerJobs);
 
 export default router;

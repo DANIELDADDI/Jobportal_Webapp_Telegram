@@ -1,6 +1,5 @@
 
 import { query } from '../config/database.js';
-
 import { hashPassword } from '../utils/helpers.js';
 
 
@@ -57,21 +56,21 @@ async function seedDatabase() {
             // Create jobseekers
             const jobseeker1 = await query(
                   `INSERT INTO users (email, password, first_name, last_name, user_type, phone, bio)
-       VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`,
+            VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`,
                   ['john@example.com', jobseekerPassword, 'John', 'Doe', 'jobseeker', '+965XXXXXXXX01',
                         'Senior React Developer with 5 years experience']
             );
 
             const jobseeker2 = await query(
                   `INSERT INTO users (email, password, first_name, last_name, user_type, phone, bio)
-       VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`,
+                  VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`,
                   ['sarah@example.com', jobseekerPassword, 'Sarah', 'Smith', 'jobseeker', '+965XXXXXXXX02',
                         'Full Stack Developer']
             );
 
             const jobseeker3 = await query(
                   `INSERT INTO users (email, password, first_name, last_name, user_type, phone, bio)
-       VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`,
+                  VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`,
                   ['ahmed@example.com', jobseekerPassword, 'Ahmed', 'Al-Rashid', 'jobseeker', '+965XXXXXXXX03',
                         'Junior Developer']
             );
@@ -88,7 +87,7 @@ async function seedDatabase() {
 
             const employer2 = await query(
                   `INSERT INTO users (email, password, first_name, last_name, user_type, phone)
-       VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
+            VALUES ($1, $2, $3, $4, $5, $6) RETURNING id`,
                   ['company2@example.com', employerPassword, 'Finance', 'Corp', 'employer', '+965XXXXXXXX11']
             );
 
@@ -103,13 +102,13 @@ async function seedDatabase() {
             console.log('Inserting company profiles...');
             await query(
                   `INSERT INTO company_profiles (user_id, company_name, company_description, company_size, industry, location, established_year)
-       VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+             VALUES ($1, $2, $3, $4, $5, $6, $7)`,
                   [employerIds[0], 'Tech Innovation Ltd', 'Leading tech company in Middle East', '500+', 'Technology', 'Kuwait City', 2015]
             );
 
             await query(
                   `INSERT INTO company_profiles (user_id, company_name, company_description, company_size, industry, location, established_year)
-       VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+            VALUES ($1, $2, $3, $4, $5, $6, $7)`,
                   [employerIds[1], 'Finance Solutions', 'Banking and financial services', '200-500', 'Finance', 'Kuwait City', 2010]
             );
 
@@ -200,7 +199,7 @@ async function seedDatabase() {
          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING id`,
                         [job.employer_id, job.category_id, job.title, job.description, job.requirements,
                         job.salary_min, job.salary_max, job.job_type, job.experience_level, job.location,
-                              job.remote, job.skills_required, 'published']
+                        job.remote, job.skills_required, 'published']
                   );
                   jobIds.push(result.rows[0].id);
             }
@@ -302,7 +301,7 @@ async function seedDatabase() {
 
 
 
-            
+
             // Insert contact messages
             console.log('Inserting contact messages...');
             const contacts = [

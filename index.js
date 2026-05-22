@@ -3,18 +3,27 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 // Import routes
 import authRoutes from './src/routes/authRoutes.js';
 import jobRoutes from './src/routes/jobRoutes.js';
 import applicationRoutes from './src/routes/applicationRoutes.js';
 import contactRoutes from './src/routes/contactRoutes.js';
+import subscriptionRoutes from './src/routes/subscriptionRoutes.js';
+
+
 
 // Import middleware
 import { errorHandler, notFoundHandler } from './src/middleware/errorHandler.js';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 // Load environment variables
 dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -44,18 +53,19 @@ app.get('/health', (req, res) => {
 
 
 // API Routes
-// app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/auth', authRoutes);
 // app.use('/api/v1/jobs', jobRoutes);
 // app.use('/api/v1/applications', applicationRoutes);
 // app.use('/api/v1/contact', contactRoutes);
+// app.use('/api/v1/subscriptions', subscriptionRoutes);
 
 
 
 // 404 Not Found
-// app.use(notFoundHandler);
+app.use(notFoundHandler);
 
 // Error Handling Middleware
-// app.use(errorHandler);
+app.use(errorHandler);
 
 
 
