@@ -1,0 +1,35 @@
+{
+      "name": "backend",
+      "version": "1.0.0",
+      "description": "",
+      "main": "index.js",
+      "scripts": {
+            "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "repository": {
+            "type": "git",
+            "url": "git+https://github.com/DANIELDADDI/Jobportal_Webapp_Telegram.git"
+      },
+      "keywords": [],
+      "author": "",
+      "license": "ISC",
+      "type": "module",
+      "bugs": {
+            "url": "https://github.com/DANIELDADDI/Jobportal_Webapp_Telegram/issues"
+      },
+      "homepage": "https://github.com/DANIELDADDI/Jobportal_Webapp_Telegram#readme",
+      "dependencies": {
+            "axios": "^1.16.1",
+            "bcryptjs": "^3.0.3",
+            "cors": "^2.8.6",
+            "dotenv": "^17.4.2",
+            "express": "^5.2.1",
+            "helmet": "^8.2.0",
+            "joi": "^18.2.1",
+            "jsonwebtoken": "^9.0.3",
+            "morgan": "^1.10.1",
+            "multer": "^2.1.1",
+            "nodemailer": "^8.0.7",
+            "pg": "^8.21.0"
+      }
+}
